@@ -2,7 +2,7 @@ fliplr
 ===
 [![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Coverage Status][coveralls-image]][coveralls-url] [![Dependencies][dependencies-image]][dependencies-url]
 
-> Flips a matrix left-to-right.
+> Flips a [matrix](https://github.com/dstructs/matrix) left-to-right.
 
 
 ## Installation
@@ -17,18 +17,79 @@ For use in the browser, use [browserify](https://github.com/substack/node-browse
 ## Usage
 
 ``` javascript
-var foo = require( 'compute-fliplr' );
+var fliplr = require( 'compute-fliplr' );
 ```
 
-#### foo( arr )
+#### fliplr( x[, opts] )
 
-What does this function do?
+Flips a [matrix](https://github.com/dstructs/matrix) left-to-right.
+
+``` javascript
+var matrix = require( 'dstructs-matrix' );
+
+var mat = matrix( [2,3] );
+mat.set( 0, 2, 5 ).set( 1, 2, 6 );
+/*
+	[ 0 0 5
+	  0 0 6 ]
+*/
+
+var lr = fliplr( mat );
+/*
+	[ 5 0 0
+	  6 0 0 ]
+*/
+```
+
+By default, the function returns a new [matrix](https://github.com/dstructs/matrix) instance. To mutate the input [matrix](https://github.com/dstructs/matrix), set the `copy` option to `false`.
+
+``` javascript
+var lr = fliplr( mat, {
+	'copy': false
+});
+/*
+	[ 5 0 0
+	  6 0 0 ]
+*/
+
+var bool = ( mat === lr );
+// returns true
+```
+
 
 
 ## Examples
 
 ``` javascript
-var foo = require( 'compute-fliplr' );
+var matrix = require( 'dstructs-matrix' ),
+	fliplr = require( 'compute-fliplr' );
+
+var data,
+	mat,
+	t, i;
+
+data = new Int8Array( 10 );
+for ( i = 0; i < data.length; i++ ) {
+	data[ i ] = i;
+}
+
+mat = matrix( data, [5,2], 'int8' );
+/*
+	[ 0 1
+	  2 3
+	  4 5
+	  6 7
+	  8 9 ]
+*/
+
+lr = fliplr( mat );
+/*
+	[ 1 0
+	  3 2
+	  5 4
+	  7 6
+	  9 8 ]
+*/
 ```
 
 To run the example code from the top-level application directory,
