@@ -101,6 +101,19 @@ describe( 'compute-fliplr', function tests() {
 				assert.strictEqual( lr.get( i, j ), mat.get( i, nCols-j-1 ) );
 			}
 		}
+
+		// Flip the matrix vertically and then flip...
+		mat = lr;
+		mat.strides[ 0 ] *= -1;
+		mat.offset = mat.length - 1;
+
+		lr = fliplr( mat );
+
+		for ( i = 0; i < nRows; i++ ) {
+			for ( j = 0; j < nCols; j++ ) {
+				assert.strictEqual( lr.get( i, j ), mat.get( i, nCols-j-1 ) );
+			}
+		}
 	});
 
 	it( 'should flip and mutate the input matrix', function test() {
@@ -124,6 +137,18 @@ describe( 'compute-fliplr', function tests() {
 		for ( i = 0; i < nRows; i++ ) {
 			for ( j = 0; j < nCols; j++ ) {
 				assert.strictEqual( lr.get( i, j ), copy.get( i, nCols-j-1 ) );
+			}
+		}
+
+		// Flip the matrix vertically and then flip...
+		lr.strides[ 0 ] *= -1;
+		lr.offset = lr.length - 1;
+
+		lr = fliplr( lr );
+
+		for ( i = 0; i < nRows; i++ ) {
+			for ( j = 0; j < nCols; j++ ) {
+				assert.strictEqual( lr.get( i, j ), copy.get( nRows-i-1, j ) );
 			}
 		}
 	});
