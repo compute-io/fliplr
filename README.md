@@ -57,7 +57,6 @@ var bool = ( mat === lr );
 ```
 
 
-
 ## Examples
 
 ``` javascript
