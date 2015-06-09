@@ -2,7 +2,7 @@ fliplr
 ===
 [![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Coverage Status][coveralls-image]][coveralls-url] [![Dependencies][dependencies-image]][dependencies-url]
 
-> Flips a [matrix](https://github.com/dstructs/matrix) left-to-right.
+> Flips a [matrix](https://github.com/dstructs/matrix) horizontally.
 
 
 ## Installation
@@ -22,7 +22,7 @@ var fliplr = require( 'compute-fliplr' );
 
 #### fliplr( x[, opts] )
 
-Flips a [matrix](https://github.com/dstructs/matrix) left-to-right.
+Flips a [matrix](https://github.com/dstructs/matrix) horizontally.
 
 ``` javascript
 var matrix = require( 'dstructs-matrix' );
@@ -66,7 +66,7 @@ var matrix = require( 'dstructs-matrix' ),
 
 var data,
 	mat,
-	t, i;
+	lr, i;
 
 data = new Int8Array( 10 );
 for ( i = 0; i < data.length; i++ ) {

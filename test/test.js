@@ -83,7 +83,7 @@ describe( 'compute-fliplr', function tests() {
 		}
 	});
 
-	it( 'should flip a matrix from left-to-right', function test() {
+	it( 'should flip a matrix horizontally', function test() {
 		var nRows,
 			nCols,
 			lr,
@@ -98,7 +98,7 @@ describe( 'compute-fliplr', function tests() {
 
 		for ( i = 0; i < nRows; i++ ) {
 			for ( j = 0; j < nCols; j++ ) {
-				assert.strictEqual( lr.get( i, j ), mat.get( nRows-i-1, j ) );
+				assert.strictEqual( lr.get( i, j ), mat.get( i, nCols-j-1 ) );
 			}
 		}
 	});
@@ -123,7 +123,7 @@ describe( 'compute-fliplr', function tests() {
 
 		for ( i = 0; i < nRows; i++ ) {
 			for ( j = 0; j < nCols; j++ ) {
-				assert.strictEqual( lr.get( i, j ), copy.get( nRows-i-1, j ) );
+				assert.strictEqual( lr.get( i, j ), copy.get( i, nCols-j-1 ) );
 			}
 		}
 	});
